@@ -1,0 +1,76 @@
+<!-- templates/tu_template.html -->
+{% extends 'base.html' %} {% block content %}
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<a
+  href="/crear_comprador/"
+  class="btn btn-primary no-darken"
+  style="
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 980px;
+    box-sizing: content-box;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(
+      90deg,
+      rgb(245, 103, 114),
+      rgb(186, 107, 255)
+    );
+    margin-left: 44.5% !important;
+    margin-right: 44% !important;
+    position: relative;
+    z-index: 2; /* Asegura que este elemento esté sobre la capa de filtro oscuro */
+  "
+>
+  <button
+    style="
+      background-image: linear-gradient(
+        90deg,
+        rgb(245, 103, 114),
+        rgb(186, 107, 255)
+      );
+    "
+  >
+    COMPRAR >
+  </button>
+</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Número de Compras</th>
+      <th>Total Pagado</th>
+      <th>Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comprador in compradores %}
+    <tr>
+      <td>{{ comprador.nombre }}</td>
+      <td>{{ comprador.num_compras }}</td>
+      <td>${{ comprador.total_pagado }}</td>
+      <td>{{ comprador.user.username }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+{% endblock %}
